@@ -1,0 +1,16 @@
+{
+  "intelephense.licenceKey": "NOOOOOOOOOOO",
+  "phpls.enable": true,
+  "explorer.file.reveal.auto": true,
+  "explorer.file.showHiddenFiles": true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.width": 50,
+  "explorer.quitOnOpen": true,
+  "explorer.keyMappings.global": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  },
+  "vetur.ignoreProjectWarning": true,
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips"
+}
