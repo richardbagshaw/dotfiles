@@ -28,5 +28,8 @@ command! TestToggleStrategy call TestToggleStrategy()
 let test#php#runner = 'phpunit'
 let test#php#phpunit#executable = 'composer test-run-plain -- '
 
+let g:test#javascript#runner = 'jest'
+let g:test#javascript#executable = 'npm test '
+
 let g:test#echo_command = 0
 

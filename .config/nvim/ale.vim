@@ -8,7 +8,6 @@ highlight clear ALEWarningSign
 " only run the linters I ask for
 let g:ale_linters_explicit = 1
 
-" open a list when we have linting issues
 let g:ale_open_list = 1
 
 " use a location list for linting errors
@@ -26,6 +25,7 @@ let g:airline#extensions#ale#enabled = 1
 " set the linters we want to use with ale
 let g:ale_linters = {
     \ 'javascript': ['eslint'],
+    \ 'php': ['php', 'phpstan'],
     \ }
 
 let g:ale_fixers = {

@@ -6,25 +6,24 @@ Plug 'tpope/vim-surround'
 " Allow gc to comment selections
 Plug 'tpope/vim-commentary'
 
-" A nicer Netrw (-)
-Plug 'tpope/vim-vinegar'
-
-" Floaty things
-Plug 'voldikss/vim-floaterm'
-
-" Theming stuff
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'ayu-theme/ayu-vim'
-Plug 'arcticicestudio/nord-vim'
+" Theme
 Plug 'rakr/vim-one'
 Plug 'ryanoasis/vim-devicons'
 
-" Treesitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Status bar
+Plug 'hoob3rt/lualine.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 
-" Syntax Highlighting
-Plug 'sheerun/vim-polyglot'
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Syntax highlighting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nelsyeung/twig.vim'
+
+" Wiki
+Plug 'vimwiki/vimwiki'
 
 " Test Runner
 Plug 'vim-test/vim-test'
@@ -33,7 +32,6 @@ Plug 'vim-test/vim-test'
 Plug 'dense-analysis/ale'
 
 " Javascript formatting
-Plug 'posva/vim-vue'
 Plug 'yuezk/vim-js'
 
 " Autopairs enabled
@@ -52,10 +50,10 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Registers
 Plug 'junegunn/vim-peekaboo'
 
-" Show git stuff in the gutter
-Plug 'airblade/vim-gitgutter'
+" Git gutter
+Plug 'mhinz/vim-signify'
 
-" Enable Git in Vim
+" Git in Vim
 Plug 'tpope/vim-fugitive'
 
 " Code Completetion and Explorer
@@ -64,7 +62,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Startify
 Plug 'mhinz/vim-startify'
 
-" " Diff Conflicts
+" Diff Conflicts
 Plug 'whiteinge/diffconflicts'
 
 " Undo Options
@@ -89,7 +87,6 @@ syntax on
 
 " show line numbers
 set number
-" set relativenumber
 
 " scroll before we hit the top or bottom
 set scrolloff=8
@@ -124,6 +121,9 @@ set nowrap
 " show whitespace characters
 set list
 
+" spelling is hard
+set spell spelllang=en_gb
+
 " replace any tabs with spaces because we are not psychos
 set expandtab
 
@@ -132,6 +132,10 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set smartindent
+
+" tab between buffers
+nmap <Tab> :bnext<CR>
+nmap <S-Tab> :bprev<CR>
 
 " set spacing for various filetypes
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=2
@@ -168,8 +172,11 @@ highlight TabLineSel ctermfg=Black ctermbg=Yellow
 " remap jj as shortcut to get out of insert mode
 imap jj <Esc>
 
-" insert mode, press CTRL-A to jump to the end of the line and stay in insert mode
+" insert mode, press CTRL-A (or <leader> a) to jump to the end of the line and stay in insert mode
+" <leader> a - added after the fact since CTRL A feels a bit clunky when used
+" in  fast flowing text typing session
 inoremap <C-a> <C-o>$
+inoremap <leader>a <C-o>$
 
 " disable the evil arrow keys
 noremap <Up> <Nop>
@@ -217,37 +224,22 @@ autocmd BufWritePre * :%s/\s\+$//e
 " when opening blade files set type to html
 autocmd BufNewFile,BufRead *.blade.php set ft=html
 
-" Airline Theme
-" let g:airline_theme='dark'
-let g:airline_theme='one'
-
 " Peekaboo / Register Settings
 let g:peekaboo_window = 'vertical botright 80new'
 
 " Highlighted Yank
 let g:highlightedyank_highlight_duration = 250
 
-" enable the git gutter so we can see changes
-let g:gitgutter_enabled = 1
-
 " Update time
 set updatetime=100
-
-" set some sensible colours for git in the gutter
-highlight GitGutterAdd ctermfg=Green
-highlight GitGutterDelete ctermfg=Red
-highlight GitGutterChange ctermfg=Yellow
 
 " set comment types for these file types
 autocmd FileType php setlocal commentstring=//\ %s
 autocmd FileType vue setlocal commentstring=//\ %s
 
-" source ~/.config/nvim/snippets.vim
-" source ~/.config/nvim/easymotion.vim
-" source ~/.config/nvim/syntastic.vim
-" source ~/.config/nvim/whichkey.vim
-" source ~/.config/nvim/fzf.vim
-
+luafile ~/.config/nvim/lualine.lua
+source ~/.config/nvim/snippets.vim
+source ~/.config/nvim/treesitter.vim
 source ~/.config/nvim/coc.vim
 source ~/.config/nvim/startify.vim
 source ~/.config/nvim/telescope.vim
@@ -255,5 +247,3 @@ source ~/.config/nvim/fugitive.vim
 source ~/.config/nvim/undotree.vim
 source ~/.config/nvim/ale.vim
 source ~/.config/nvim/vim-test.vim
-source ~/.config/nvim/treesitter.vim
-source ~/.config/nvim/polyglot.vim

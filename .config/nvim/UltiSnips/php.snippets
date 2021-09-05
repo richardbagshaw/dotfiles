@@ -1,0 +1,28 @@
+snippet r "add in ray debug tool"
+ray($$1);
+endsnippet
+
+
+snippet t "add a new test"
+/** @test */
+public function it_$1(): void
+{
+	$2
+	$this->assertTrue(false);
+}
+endsnippet
+
+snippet m "add a method"
+$1 function $2(): $3
+{
+	$4
+}
+endsnippet
+
+snippet pm "add a public method"
+public function $2(): $3
+{
+	$4
+}
+endsnippet
+
