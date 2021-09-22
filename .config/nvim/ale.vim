@@ -15,9 +15,14 @@ let g:ale_set_loclist = 1
 let g:ale_list_window_size = 5
 
 " php standards
-let g:ale_php_phpcbf_standard='./ruleset.xml'
-let g:ale_php_phpcs_standard='./ruleset.xml'
-" let g:ale_php_phpmd_ruleset='ruleset.xml'
+function! SetRuleCodeSnifferRuleset()
+   if filereadable("ruleset.xml")
+       let g:ale_php_phpcbf_standard='./ruleset.xml'
+       let g:ale_php_phpcs_standard='./ruleset.xml'
+   endif
+endfunction
+
+au VimEnter * call SetRuleCodeSnifferRuleset()
 
 " add linting issue details to the airline bar
 let g:airline#extensions#ale#enabled = 1
@@ -25,7 +30,7 @@ let g:airline#extensions#ale#enabled = 1
 " set the linters we want to use with ale
 let g:ale_linters = {
     \ 'javascript': ['eslint'],
-    \ 'php': ['php', 'phpstan'],
+    \ 'php': ['php', 'phpstan', 'psalm'],
     \ }
 
 let g:ale_fixers = {

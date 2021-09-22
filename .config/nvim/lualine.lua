@@ -1,7 +1,7 @@
 require'lualine'.setup {
   options = {
     icons_enabled = true,
-    theme = 'horizon',
+    theme = 'ayu_dark',
     lualine_c = {'filename'},
     lualine_x = {'location'},
     lualine_y = {},

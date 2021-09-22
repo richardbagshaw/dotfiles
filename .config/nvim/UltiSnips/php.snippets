@@ -2,6 +2,13 @@ snippet r "add in ray debug tool"
 ray($$1);
 endsnippet
 
+snippet vddt "vardump date time"
+var_dump('VAR_DUMPING >>> ' . __FILE__ . ':' . __LINE__);
+endsnippet
+
+snippet rddt "raydump date time"
+ray('VAR_DUMPING >>> ' . __FILE__ . ':' . __LINE__);
+endsnippet
 
 snippet t "add a new test"
 /** @test */

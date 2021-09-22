@@ -9,6 +9,11 @@ Plug 'tpope/vim-commentary'
 " Theme
 Plug 'rakr/vim-one'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
+
+" Golang
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 " Status bar
 Plug 'hoob3rt/lualine.nvim'
@@ -92,8 +97,9 @@ set number
 set scrolloff=8
 
 " set an amazing colour scheme
-set background=dark
+let g:one_allow_italics = 1
 colorscheme one
+set background=dark
 
 " Move visual selection with SHIFT+J/K
 vnoremap J :m '>+1<cr>gv=gv
@@ -104,6 +110,7 @@ set history=500
 
 " set what character to use with vertical splits
 set fillchars+=vert:│
+highlight vertsplit guifg=fg guibg=bg
 
 " show a line where 120 characters is when editing
 set colorcolumn=120
